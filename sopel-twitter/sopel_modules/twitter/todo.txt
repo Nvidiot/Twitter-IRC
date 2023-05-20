@@ -1,0 +1,30 @@
+Improvements
+------------
+* Allow for toggling replies on/off per-user
+* Put source in git repo
+* Put everything on GitHub
+* Replace multiple newlines by a single unicode char
+* Replace multiple spaces by a single space
+* Put config in DB for dynamic updates
+* Allow follow/unfollow via commands
+* Handle embeds properly
+* Handle retweets
+
+
+
+Bugs
+----
+* Handle quote tweets (https://twitter.com/SpaceOffshore/status/1655283447768727553)
+** Very similar to reply-to tweets, but tweet.quotedTweet is set and contains the relevant info
+** Quote tweet needs to have ' {tweet.url}' appended, does not have one by itself
+** Ignore the quoted tweet if the user is already on the list of accounts (but still post the regular tweet + url)
+
+* No link for https://twitter.com/lorengrush/status/1655554064573145088
+** Shows as a reply-to tweet with the original posted, followed by lorengrush tweet, but no url
+
+* ERROR    - Unexpected error (Could not resolve username 'daily_hopper' to ID)
+** Also seen with other usernames. Maybe cache username -> ID mapping and use that to query instead to save API calls?
+** That'd change the API call but not eliminate it from what I can tell
+
+* Extra long tweets break the URL (https://twitter.com/NASASpaceflight/status/1657860364367810566)
+** Cut off the tweet content to force the url to fit

@@ -1,0 +1,3 @@
+sopel>=7.1,<8
+setuptools
+snscrape
