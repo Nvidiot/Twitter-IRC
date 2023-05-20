@@ -1,8 +1,6 @@
 Improvements
 ------------
 * Allow for toggling replies on/off per-user
-* Put source in git repo
-* Put everything on GitHub
 * Replace multiple newlines by a single unicode char
 * Replace multiple spaces by a single space
 * Put config in DB for dynamic updates
