@@ -103,7 +103,9 @@ def twitter_check(bot):
 
                     if not _is_followed(replied_to_tweet.user.username):
                         # Not already following the replied-to tweet user, post replied-to tweet
-                        bot.say(f'[Twitter] @{replied_to_tweet.user.username}: {_cleanup(replied_to_tweet.rawContent)}',
+                        bot.say(f'[Twitter] @{replied_to_tweet.user.username}: '
+                                f'{_cleanup(replied_to_tweet.rawContent)} '
+                                f'{replied_to_tweet.url}',
                                 CHANNEL)
 
                     bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)} {tweet.url}', CHANNEL)
