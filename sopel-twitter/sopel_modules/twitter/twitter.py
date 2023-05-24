@@ -32,6 +32,7 @@ USER_LIST = [
     'planet4589',
     'tesla',
     'thesheetztweetz',
+    'torybruno',
 ]
 
 UPDATE_INTERVAL = 60
