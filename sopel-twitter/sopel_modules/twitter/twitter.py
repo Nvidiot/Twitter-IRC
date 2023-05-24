@@ -106,6 +106,16 @@ def twitter_check(bot):
                                 CHANNEL)
 
                     bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)} {tweet.url}', CHANNEL)
+                elif tweet.quotedTweet:
+                    # Quoted tweet
+                    if not _is_followed(tweet.quotedTweet.user.username):
+                        # Not already following the quoted tweet user, post quoted tweet
+                        bot.say(f'[Twitter] @{tweet.quotedTweet.user.username}: '
+                                f'{_cleanup(tweet.quotedTweet.rawContent)} '
+                                f'{tweet.quotedTweet.url}',
+                                CHANNEL)
+
+                    bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)} {tweet.url}', CHANNEL)
                 else:
                     # Regular tweet
                     bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)}', CHANNEL)
