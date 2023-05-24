@@ -20,6 +20,9 @@ Bugs
 * No link for https://twitter.com/lorengrush/status/1655554064573145088
 ** Shows as a reply-to tweet with the original posted, followed by lorengrush tweet, but no url
 
+* No link for https://twitter.com/thesheetztweetz/status/1661448483029540865
+** Not a reply or quote tweet
+
 * ERROR    - Unexpected error (Could not resolve username 'daily_hopper' to ID)
 ** Also seen with other usernames. Maybe cache username -> ID mapping and use that to query instead to save API calls?
 ** That'd change the API call but not eliminate it from what I can tell
