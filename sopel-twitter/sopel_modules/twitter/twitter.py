@@ -77,6 +77,18 @@ def _is_followed(username):
     return False
 
 
+def _say(bot, tweet, *, add_url=False):
+    if add_url:
+        bot.say(f'[Twitter] @{tweet.user.username}: '
+                f'{_cleanup(tweet.rawContent)} '
+                f'{tweet.url}',
+                CHANNEL)
+    else:
+        bot.say(f'[Twitter] @{tweet.user.username}: '
+                f'{_cleanup(tweet.rawContent)}',
+                CHANNEL)
+
+
 def setup(bot):
     LOGGER.info("Updating last seen timestamps for configured users")
     # Store most recent tweet timestamp from the last 10 tweets per-user
@@ -103,25 +115,19 @@ def twitter_check(bot):
 
                     if not _is_followed(replied_to_tweet.user.username):
                         # Not already following the replied-to tweet user, post replied-to tweet
-                        bot.say(f'[Twitter] @{replied_to_tweet.user.username}: '
-                                f'{_cleanup(replied_to_tweet.rawContent)} '
-                                f'{replied_to_tweet.url}',
-                                CHANNEL)
+                        _say(bot, replied_to_tweet, add_url=True)
 
-                    bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)} {tweet.url}', CHANNEL)
+                    _say(bot, tweet, add_url=False)
                 elif tweet.quotedTweet:
                     # Quoted tweet
                     if not _is_followed(tweet.quotedTweet.user.username):
                         # Not already following the quoted tweet user, post quoted tweet
-                        bot.say(f'[Twitter] @{tweet.quotedTweet.user.username}: '
-                                f'{_cleanup(tweet.quotedTweet.rawContent)} '
-                                f'{tweet.quotedTweet.url}',
-                                CHANNEL)
+                        _say(bot, tweet.quotedTweet, add_url=True)
 
-                    bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)} {tweet.url}', CHANNEL)
+                    _say(bot, tweet, add_url=True)
                 else:
                     # Regular tweet
-                    bot.say(f'[Twitter] @{user}: {_cleanup(tweet.rawContent)}', CHANNEL)
+                    _say(bot, tweet, add_url=False)
                 bot.memory[f'last_tweet_ts_{user}'] = tweet.date
 
     check_end = datetime.now()
