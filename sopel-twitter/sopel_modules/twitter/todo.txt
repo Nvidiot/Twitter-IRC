@@ -12,11 +12,6 @@ Improvements
 
 Bugs
 ----
-* Handle quote tweets (https://twitter.com/SpaceOffshore/status/1655283447768727553)
-** Very similar to reply-to tweets, but tweet.quotedTweet is set and contains the relevant info
-** Quote tweet needs to have ' {tweet.url}' appended, does not have one by itself
-** Ignore the quoted tweet if the user is already on the list of accounts (but still post the regular tweet + url)
-
 * No link for https://twitter.com/lorengrush/status/1655554064573145088
 ** Shows as a reply-to tweet with the original posted, followed by lorengrush tweet, but no url
 
