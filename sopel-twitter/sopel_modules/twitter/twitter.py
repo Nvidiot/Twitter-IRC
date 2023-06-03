@@ -28,7 +28,6 @@ USER_LIST = [
     'lorengrush',
     'lrocket',
     'nasawebb',
-    'nextspaceflight',
     'planet4589',
     'tesla',
     'thesheetztweetz',
